@@ -1,0 +1,41 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div class="mb-3">
+        <form action="/anuncio/editar/{{anuncio.id}}" method="post">
+            <p><label for="titulo">Título</label>
+            <input type="text" id="titulo" name="titulo" value="{{anuncio.titulo}}"></p>
+            <p><label for="descricao">Descrição</label>
+                <input type="text" id="descricao" name="descricao" value="{{anuncio.descricao}}"></p>
+            <p><label for="valor">Valor</label>
+            <input type="text" id="valor" name="valor" value="{{anuncio.valor}}"></p>
+            <p><label for="qtde">Quantidade</label>
+            <input type="text" id="qtde" name="qtde" value="{{anuncio.qtde}}"></p>
+            <p>Oferta: {{anuncio.oferta}}. Se deseja alterar, selecione abaixo:</p>
+            <select name="oferta" id="oferta">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select> 
+            <p>Categoria: {{anuncio.categoria}}</p>
+            <p><label for="cat">Se deseja alterar, selecione abaixo:</label>
+                <select id="cat" name="cat">
+                    {% for categoria in categorias %} 
+                        <option value="{{ categoria.id_categoria }}">{{ categoria.descricao }}</option>
+                    {% endfor %}
+                </select></p>
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("anuncio")}}> Cancelar</a>
+    </div>
+    <br>
+    <br>
+    <br> 
+</body>
+</html>

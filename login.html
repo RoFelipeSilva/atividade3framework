@@ -1,0 +1,30 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <br>
+        <h4>Login</h4>
+        <div class="mb-3">
+            <br>
+        <form action="/login" method="post">
+            <label for="formGroupExampleInput" class="form-label">Email</label>
+            <input type="text" id="email" name="email" class="form-control">
+            <label for="formGroupExampleInput" class="form-label">Senha</label>
+            <input type="password" id="passwd" name="passwd" class="form-control">       
+            <br>
+            <p><input type="submit" value="Logar"></p>
+        </form>
+    </html>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

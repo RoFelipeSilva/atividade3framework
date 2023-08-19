@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div>
+        <form action="/compra/editar/{{compra.id}}" method="post">
+            <p><label for="titulo">Qtde</label>
+            <input type="text" id="qtde" name="qtde" value="{{compra.qtde}}"></p>
+            <p><label for="valor">Valor</label>
+            <input type="text" id="valor" name="valor" value="{{compra.valor}}"></p>
+            <p><label for="total">Total</label>
+                <input type="text" id="total" name="total" value="{{compra.total}}"></p>
+            <p><label for="anuncio_id">ID Anúncio</label>
+            <input type="text" id="anuncio_id" name="anuncio_id" value="{{compra.anuncio_id}}"></p>
+            <p><label for="usuario_id">ID Usuário</label>
+            <input type="text" id="usuario_id" name="usuario_id" value="{{compra.usuario_id}}"></p>
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("anuncio")}}> Cancelar</a>
+    </div>
+    <br>
+    <br>
+    <br> 
+</body>
+</html>

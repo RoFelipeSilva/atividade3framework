@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div>
+        <form action="/anuncio/cadfavorito/{{favorito.id}}" method="post">
+            <p><label for="anuncio_id">Anúncio</label>
+            <input type="text" id="anuncio_id" name="anuncio_id" value="{{favorito.anuncio_id}}"></p>
+            <p><label for="usuario_id">Usuário</label>
+                <input type="text" id="usuario_id" name="usuario_id" value="{{favorito.usuario_id}}"></p>
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("cadfavorito")}}> Cancelar</a>
+    </div>
+    <br>
+    <br>
+    <div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Anúncio ID</th>
+                    </tr>
+            </thead>
+            <tbody>
+                {% for anuncio in anuncios %}
+                    <tr>
+                        <td>{{ anuncio.id }}</td>
+                        <td>{{ anuncio.titulo }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <br>
+    <br>
+    <br> 
+</body>
+</html>

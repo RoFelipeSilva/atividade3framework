@@ -1,0 +1,83 @@
+<!doctype html>
+<html>
+<head> 
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <br>
+        <a href={{url_for("index")}}>Página Inicial</a>
+        <br>
+    </div>
+</head>
+<body>
+    <br>
+    <h3>{{titulo}}</h3>
+    <div id="cadanuncio" class="mb-3"></div>
+        <form action="cadanuncio" method="post">
+            <label for="formGroupExampleInput" class="form-label">Título</label> 
+            <input type="text" name="titulo" id="titulo" class="form-control"><br>
+            <label for="formGroupExampleInput" class="form-label">Descrição</label> 
+            <input type="text" name="descricao" id="descricao" class="form-control"><br>
+            <label for="formGroupExampleInput" class="form-label">Quantidade</label>
+            <input type="test" name="qtde" id="qtde" class="form-control"><br>
+            <label for="formGroupExampleInput" class="form-label">Valor</label>
+            <input type="text" name="valor" id="valor" class="form-control"><br>
+            <label for="formGroupExampleInput" class="form-label">Oferta</label>
+            <select name="oferta" id="oferta">
+                <option value="sim">Sim</option>
+                <option value="nao">Não</option>
+            </select> 
+            <label for="formGroupExampleInput" class="form-label">Categoria</label>
+                <select id="cat" name="cat">
+                    {% for categoria in categorias %} 
+                        <option value="{{ categoria.id_categoria }}">{{ categoria.descricao }}</option>
+                    {% endfor %}
+                </select>
+            <label for="formGroupExampleInput" class="form-label">ID (automático)</label>
+                <input type="text" name="usuario_id" id="usuario_id" value="{{ current_user.id }}">
+            <br>
+            <br>
+            <input type="submit" value="Cadastrar">
+            <br>
+        </form>   
+    </div>
+    <br>
+    <br>
+    <h2>Anúncios publicados</h2>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Título</th>
+                <th>Descrição</th>
+                <th>Valor</th>
+                <th>Quantidade</th>
+                <th>Oferta</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for anuncio in anuncios %}
+                <tr>
+                    <td>{{ anuncio.id }}</td>
+                    <td>{{ anuncio.titulo }}</td>
+                    <td>{{ anuncio.descricao }}</td>
+                    <td>{{ anuncio.valor }}</td>
+                    <td>{{ anuncio.qtde }}</td>
+                    <td>{{ anuncio.oferta }}</td>
+                    <td><a href={{ url_for("editaranuncio",id=anuncio.id) }}>Editar</a></td>
+                    <td><a href={{ url_for("deletaranuncio",id=anuncio.id) }}>Deletar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+</body>
+<footer>
+    <div>
+        <br>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,25 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"> 
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div>
+        <form action="/anuncio/cadpergunta/{{pergunta.id}}" method="post">
+            <p><label for="pergunta">Pergunta</label>
+            <input type="text" id="pergunta" name="pergunta" value="{{pergunta.pergunta}}"></p>
+            <p><label for="resposta">Resposta</label>
+                <input type="text" id="resposta" name="resposta" value="{{pergunta.resposta}}"></p>
+            <p><input type="submit" value="Alterar"></p>
+        </form>
+        <a href={{url_for("index")}}> Cancelar</a>
+    </div>
+    <br>
+    <br>
+    <br> 
+</body>
+</html>

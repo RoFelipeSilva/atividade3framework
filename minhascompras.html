@@ -1,0 +1,49 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <br>
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div>
+        <br>
+        <h2>Minhas compras</h2>
+        <br>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Qtde</th>
+                <th>Valor</th>
+                <th>Total</th>
+                <th>ID Anúncio</th>
+                <th>ID Usuário</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+                </tr>
+        </thead>
+        <tbody>
+            {% for compra in compras %}
+                <tr>
+                    <td>{{ compra.qtde }}</td>
+                    <td>{{ compra.valor }}</td>
+                    <td>{{ compra.total }}</td>
+                    <td>{{ compra.anuncio_id }}</td>
+                    <td>{{ compra.usuario_id }}</td>
+                    <td><a href={{ url_for("editarcompra",id=compra.id) }}>Editar</a></td>
+                    <td><a href={{ url_for("deletarcompra",id=compra.id) }}>Deletar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

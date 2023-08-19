@@ -1,0 +1,27 @@
+<!doctype html>
+<html>
+<head> 
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div>
+        <h2>Qual relatório deseja?</h2>
+        <div id="escolha">
+            <ul id="atalhos">
+                <li><a href={{url_for("relVendas")}}>Relatório de vendas</a></li>  
+                <li><a href={{url_for("relCompras")}}>Relatório de compras</a></li> 
+            </ul>
+        </div>
+        <br>
+    </div>  
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

@@ -1,0 +1,35 @@
+<!doctype html>
+<html>
+<head><link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG</title>
+</head>
+<body>
+    <br>
+    <h2> Bem vindo ao PEG PAG</h2>
+    <div id="menus">
+        <br>
+        <ul id="atalhos" class="nav flex-column">
+            
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("usuario")}}>Cadastrar usuário</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("anuncio")}}>Anúncios - Comprar e Vender</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("ofertas")}}>Ofertas e Promoções</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("config")}}>Configurar categorias e seu perfil</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("meusfavoritos")}}>Meus favoritos</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("minhascompras")}}>Minhas compras</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("relatorios")}}>Relatórios</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("faleconosco")}}>Fale conosco</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{url_for("quemsomos")}}>Quem somos</a></li>
+            <li class="nav-item"><a class="nav-link active" aria-current="page" href={{ url_for("logout") }}> Logout</a></li>
+        </ul>   
+    </div>
+    <br><br> 
+        <img src="../static/image/banner1.jpg">
+    
+    <br><br>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

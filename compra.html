@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div id="compra">
+        <h3>{{titulo}}</h3>
+    </div>
+    <div class="row g-3">
+        <div class="col">    
+        <form action="/compra/criar" method="post">
+            <p>Confirme o item a comprar</p>
+            <select id="anuncio_id" name="anuncio_id" id="anuncio_id" class="form-control">
+                {% for anuncio in anuncios %} 
+                    <option id="idanuncio" name="idanuncio" value="{{ anuncio.id }}">{{ anuncio.titulo }}</option>
+                {% endfor %}
+                </select></p>
+            <p>Quantidade:</p> 
+            <input type="text" name="qtde" id="qtde" class="form-control"><br>
+            <p>Valor:</p>
+            <input type="text" name="valor" id="valor" class="form-control"><br>
+            <p>Total:</p>
+            <input type="text" name="total" id="total" class="form-control"><br>
+            <p>ID Usuário (automático):</p>
+            <input type="test" name="usuario_id" id="usuario_id" value="{{current_user.id}}"bclass="form-control"><br>
+            <br>
+            <br>
+            <input type="submit" value="Comprar">
+            <br>
+        </form>   
+    </div>
+    
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

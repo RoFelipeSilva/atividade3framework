@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <br>
+    <div>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Título</th>
+                    <th>Descrição</th>
+                    <th>Valor</th>
+                    <th>Quantidade</th>
+                    <th>Oferta</th>
+                    <th>Perguntar ao vendedor</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for anuncio in anuncios %}
+                    <tr>
+                        <td>{{ anuncio.id }}</td>
+                        <td>{{ anuncio.titulo }}</td>
+                        <td>{{ anuncio.descricao }}</td>
+                        <td>{{ anuncio.valor }}</td>
+                        <td>{{ anuncio.qtde }}</td>
+                        <td>{{ anuncio.oferta }}</td>
+                        <td><a href={{ url_for("perguntar") }}>Perguntar</a></td>
+                        <td><a href={{ url_for("cadfavorito",id=anuncio.id) }}>Adicionar a Favoritos</a></td>
+                        <td><a href={{ url_for("compra") }}>COMPRAR</a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

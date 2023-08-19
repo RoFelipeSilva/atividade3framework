@@ -1,0 +1,55 @@
+<!doctype html>
+<html>
+<head><link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    
+    <div id="favorito">
+        <form action="/anuncio/cadfavorito" method="post">
+            <p><label for="anuncio_id">Anúncio</label>
+                <select id="anuncio_id" name="anuncio_id">
+                    {% for anuncio in anuncios %} 
+                        <option value="{{ anuncio.id }}">{{ anuncio.titulo }}</option>
+                    {% endfor %}
+                </select></p>
+            
+            <p>Seu ID (automático)</p>
+            <input type="text" name="usuario_id" id="usuario_id" value="{{current_user.id}}"><br>
+            <br>
+            <br>
+            <input type="submit" value="Adicionar">
+            <br>
+        </form>   
+    </div>
+    <div>
+        <h2> Anúncios favoritos</h2>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Anúncio ID</th>
+                    <th>Usuário ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for favorito in favoritos %}
+                    <tr>
+                        <td>{{ favorito.id }}</td>
+                        <td>{{ favorito.anuncio_id }}</td>
+                        <td>{{ favorito.usuario_id }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    
+<footer>
+    <br>
+    <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

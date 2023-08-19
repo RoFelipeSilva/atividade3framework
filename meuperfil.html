@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head> 
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+        <br>
+        <br>
+    </div>
+</head>
+<body><link rel="stylesheet" href="../static/css/bootstrap.css">
+    <div>
+        <p>Nome: {{ current_user.nome }} </p>
+        <p>Identificação (ID): {{ current_user.id }}</p>
+        <p>CPF: {{ current_user.cpf }}</p>
+        <p>Endereço: {{current_user.endereco }}</p>
+        <p>Email: {{current_user.email }}</p>
+        <br>
+        <p><a href={{ url_for("editarusuario",id=current_user.id) }}>Editar meu perfil</a></p>
+    </div>
+    <br>
+    <div>
+        <h3>Anúncios adicionados a Favoritos:</h3>
+        <table class="table table-dark table-striped">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Anúncio ID</th>
+                    <th>Usuário ID</th>
+                    <th>Editar</th>
+                    <th>Excluir</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for favorito in favoritos %}
+                {% if current_user.id == favorito.usuario_id %}
+                    <tr>
+                        <td>{{ favorito.id }}</td>
+                        <td>{{ favorito.anuncio_id }}</td>
+                        <td>{{ favorito.usuario_id }}</td>
+                        <td><a href={{ url_for("editarfavorito",id=favorito.id) }}>Editar</a></td>
+                        <td><a href={{ url_for("deletarfavorito",id=favorito.id) }}>Deletar</a></td>
+                    </tr>
+                {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+    </div> 
+    <br>
+    <br> 
+</body>
+</html>

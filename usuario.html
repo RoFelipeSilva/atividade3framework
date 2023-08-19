@@ -1,0 +1,77 @@
+<!doctype html>
+<html>
+<head>
+    <link rel="stylesheet" href="../static/css/bootstrap.css"> 
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+    <br>
+    <p>Olá, {{ current_user.nome }}</p>
+    <br></div>
+</head>
+<body>
+    <div id="cadusuario">
+        <h3>{{titulo}}</h3>
+        <form action="/usuario/criar" method="post">
+            <div class="mb-3">
+                <label for="formGroupExampleInput" class="form-label">Nome</label>
+                <input type="text" name="nome" id="nome" class="form-control">
+            </div>
+            <div>
+                <label for="formGroupExampleInput" class="form-label">Email</label>
+                <input type="text" name="email" id="email" class="form-control">
+            </div>
+            <div>
+                <label for="formGroupExampleInput" class="form-label">CPF</label>
+                <input type="text" name="cpf" id="cpf" class="form-control">
+            </div>
+            <div>
+                <label for="formGroupExampleInput" class="form-label">Endereço</label>
+                <input type="text" name="endereco" id="endereco" class="form-control">
+            </div>
+            <div>
+                <label for="formGroupExampleInput" class="form-label">Senha</label>
+                <input type="test" name="senha" id="senha" class="form-control">
+            <br>
+                <input type="submit" value="Cadastrar">
+            <br>
+        </form>   
+    </div>
+    <div>
+        <br>
+        <h4>Lista de {{titulo}}</h4>
+    <table class="table table-dark table-striped">
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>E-mail</th>
+                <th>CPF</th>
+                <th>Endereço</th>
+                <th>Senha</th>
+                <th>Editar</th>
+                <th>Deletar</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for usuario in usuarios %}
+                <tr>
+                    <td>{{ usuario.nome }}</td>
+                    <td>{{ usuario.email }}</td>
+                    <td>{{ usuario.cpf }}</td>
+                    <td>{{ usuario.endereco }}</td>
+                    <td>{{ usuario.senha }}</td>
+                    <td><a href={{ url_for("editarusuario",id=usuario.id) }}>Editar</a></td>
+                    <td><a href={{ url_for("deletarusuario",id=usuario.id) }}>Deletar</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>

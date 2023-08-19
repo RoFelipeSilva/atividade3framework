@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head> 
+    <link rel="stylesheet" href="../static/css/bootstrap.css">
+    <title>PEG PAG - {{titulo}}</title>
+    <div id="home">
+        <a href={{url_for("index")}}>Página Inicial</a>
+    </div>
+</head>
+<body>
+    <div id="perguntar">
+        <form action="cadpergunta" method="post">
+            <p>Sua pergunta:</p> 
+            <input type="text" name="pergunta" id="pergunta"><br>
+            <p>Anúncio:</p>
+            <select id="anuncio_id" name="anuncio_id">
+                {% for anuncio in anuncios %} 
+                    <option value="{{ anuncio.id }}">{{ anuncio.titulo }}</option>
+                {% endfor %}
+            </select></p>
+            <p>ID do Usuário (automático)</p>
+            <input type="text" name="usuario_id" id="usuario_id" value="{{ current_user.id }}"><br>
+            <br>
+            <br>
+            <input type="submit" value="Perguntar">
+            <br>
+        </form>   
+    </div>
+    <h2>Perguntas já efetuadas</h2>
+    <body>
+        <br>
+        <div>
+            <table border="1">
+                <thead>
+                    <tr>
+                        <th>Pergunta</th>
+                        <th>Resposta</th>
+                        <th>Responder</th>
+                        <th>Excluir</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for pergunta in perguntas %}
+                        <tr>
+                            <td>{{ pergunta.pergunta }}</td>
+                            <td>{{ pergunta.resposta }}</td>
+                            <td><a href={{ url_for("editarpergunta",id=pergunta.id) }}>Responder</a></td>
+                            <td><a href={{ url_for("deletarpergunta",id=pergunta.id) }}>Deletar</a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+</body>
+<footer>
+    <div>
+        <p>Copyright © 2023</p>
+    </div>
+</footer>
+</html>
